@@ -1,0 +1,27 @@
+<div class="flex justify-content-center p-6">
+  <div class="flex flex-column w-3 gap-5">
+    <span class="font-bold text-3xl">Bienvenido a nuestra plataforma!!</span>
+    <form [formGroup]="formLogin" class="flex gap-4 flex-column">
+      <div class="flex flex-column gap-2">
+        <label for="username">Usuario</label>
+        <input
+          formControlName="username"
+          pInputText
+          id="username"
+          aria-describedby="username-help"/>
+      </div>
+      <div class="flex flex-column gap-2">
+        <label for="username">Contraseña</label>
+        <input
+          formControlName="password"
+          pInputText
+          id="password" type="password"
+          aria-describedby="username-help"/>
+      </div>
+    </form>
+    <div class="flex justify-content-end">
+      <p-button label="Login" (click)="login()" />
+    </div>
+  </div>
+
+</div>

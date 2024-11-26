@@ -1,0 +1,75 @@
+<div class="flex justify-content-center">
+  <div class="w-6 flex gap-5 flex-column">
+    <p-menubar [model]="items" />
+    <p-table [value]="parqueaderos" styleClass="{{'p-datatable-sm'}}"
+             selectionMode="single" [(selection)]="selectedParqueadero" (onRowSelect)="seleccionarParqueadero()" >
+      <ng-template pTemplate="caption">
+        <div class="flex align-items-center justify-content-between">
+          Parqueaderos registrados
+          <p-button icon="pi pi-plus" (click)="verFormParqueadero = true"/>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Nombre</th>
+          <th>Nit</th>
+          <th>Direccion</th>
+          <th>Telefono</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-parqueadero>
+        <tr [pSelectableRow]="parqueadero">
+          <td>{{ parqueadero.nombre }}</td>
+          <td>{{ parqueadero.nit }}</td>
+          <td>{{ parqueadero.direccion }}</td>
+          <td>{{ parqueadero.telefono }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p-dialog header="Crear / Editar" [modal]="true" [(visible)]="verFormParqueadero" [style]="{ width: '25rem' }" (onHide)="cancel()">
+  <form [formGroup]="formParqueadero" class="flex flex-column gap-5">
+    <div class="flex flex-column gap-2">
+      <label for="nombre">Nombre</label>
+      <input
+        formControlName="nombre"
+        pInputText
+        id="nombre"
+        aria-describedby="username-help"/>
+    </div>
+
+    <div class="flex flex-column gap-2">
+      <label for="nit">Nit</label>
+      <input
+        formControlName="nit"
+        pInputText
+        id="nit"
+        aria-describedby="username-help"/>
+    </div>
+
+    <div class="flex flex-column gap-2">
+      <label for="direccion">Direccion</label>
+      <input
+        formControlName="direccion"
+        pInputText
+        id="direccion"
+        aria-describedby="username-help"/>
+    </div>
+
+    <div class="flex flex-column gap-2">
+      <label for="telefono">Telefono</label>
+      <input
+        formControlName="telefono"
+        pInputText
+        id="telefono"
+        aria-describedby="username-help"/>
+    </div>
+  </form>
+
+  <div class="flex justify-content-end gap-2 mt-4">
+    <p-button label="Cancelar" severity="secondary" (onClick)="cancel()" />
+    <p-button label="Guardar" disabled="{{!formParqueadero.valid}}" (onClick)="accionFormularioParqueadero()" />
+  </div>
+</p-dialog>
