@@ -2,7 +2,7 @@ Registro de Entrada y Salida de Vehículos
 Funcionalidad: Se implementa un sistema para registrar las entradas y salidas de vehículos en el parqueadero, facilitando la gestión y control del flujo vehicular.
 Descripción:
 •
-Registro de entrada:
+**Registro de entrada:**
 •
 Al momento de ingresar un vehículo, se asocia con una tarifa específica dependiendo del tamaño del vehículo y el parqueadero correspondiente.
 •
